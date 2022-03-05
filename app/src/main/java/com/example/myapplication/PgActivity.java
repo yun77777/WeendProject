@@ -20,7 +20,7 @@ public class PgActivity extends AppCompatActivity {
     private BootpayWebView webview;
 //    private String url = "https://www.naver.com";
 //private String url = "http://10.0.2.2:3000"; // instead of localhost
-private String url = "file:///android_asset/index.html"; // instead of localhost
+private String url = "file:///android_asset/index/index.html"; // instead of localhost
 //    private String url = "http://3.37.87.71:3000/"; // instead of localhost
 
 
@@ -109,7 +109,6 @@ private String url = "file:///android_asset/index.html"; // instead of localhost
             public void onDone(String data) {
                 System.out.println("bootpay done");
                 System.out.println(data);
-
             }
         });
         webview.loadUrl(url);
