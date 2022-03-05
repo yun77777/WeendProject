@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         webview = (WebView) findViewById(R.id.wv_main);
 
-
         btn_move = (Button)findViewById(R.id.btn_move);
         btn_move.setOnClickListener(new View.OnClickListener() {
             @Override

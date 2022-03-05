@@ -20,7 +20,7 @@ public class PgActivity extends AppCompatActivity {
     private BootpayWebView webview;
 //    private String url = "https://www.naver.com";
 //private String url = "http://10.0.2.2:3000"; // instead of localhost
-private String url = "file:///android_asset/index/index.html"; // instead of localhost
+    private String url = "file:///android_asset/index/index.html"; // instead of localhost
 //    private String url = "http://3.37.87.71:3000/"; // instead of localhost
 
 
@@ -46,10 +46,11 @@ private String url = "file:///android_asset/index/index.html"; // instead of loc
 //        webview.setWebChromeClient(new WebChromeClient());
 //        webview.setWebViewClient(new WebViewClientClass());
 
-
         webview.setWebViewClient(new WebViewClient() {
-            @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.d("sssss", url);
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.d("urlurlurl", url);
+                Log.d("view", String.valueOf(view));
                 try { /** * 201229 * 카카오링크 오류 수정을 위해 아래 if문을 추가함. */
                 if (url != null && url.startsWith("intent://kakaopay/")) {
                     try {
@@ -150,29 +151,33 @@ private String url = "file:///android_asset/index/index.html"; // instead of loc
 
 
 
-    private class WebViewClientClass extends WebViewClient {
+//    private class WebViewClientClass extends WebViewClient {
 //        @Override
 //        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 //            Log.d("view:",view.getUrl());
 //            view.loadUrl(url);
 //            return true;
 //        }
-    }
+//    }
+
     @Override
     public void onBackPressed() {
         // 누적된 history를 저장할 변수
         WebBackForwardList list = webview.copyBackForwardList();
         Log.d("WebBackForwardList:", String.valueOf(list));
-//        if (list.getCurrentIndex() == 0 ||  !webview.canGoBack()) {
-//            // 처음 들어온 페이지이거나, history가 없는경우
-//            super.onBackPressed();
-//        } else {
-//            // history가 있는 경우
-//            // 현재 페이지로 부터 history 수 만큼 뒷 페이지로 이동
-//            webview.goBackOrForward(-(list.getCurrentIndex()));
+        Log.d("list.getCurrentIndex():", String.valueOf(list.getCurrentIndex()));
+        if (list.getCurrentIndex() == 0 ||  !webview.canGoBack()) {
+            // 처음 들어온 페이지이거나, history가 없는경우
+            super.onBackPressed();
+        } else if (list.getCurrentIndex() == 1 || webview.canGoBack()) {
+            webview.loadUrl("file:///android_asset/index/index.html");
+        } else {
+            // history가 있는 경우
+            // 현재 페이지로 부터 history 수 만큼 뒷 페이지로 이동
+            webview.goBackOrForward(-(list.getCurrentIndex()));
 //            // history 삭제
-//            webview.clearHistory();
-//        }
+            webview.clearHistory();
+        }
     }
 //
 //    @Override
