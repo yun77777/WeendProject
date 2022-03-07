@@ -65,6 +65,14 @@
     }
 
 
+function getAccessToken() {
+    window.bridge.getAccessToken();
+}
+
+function getAccessToken() {
+    window.bridge.refundTest('zz');
+}
+
     </script>
 </head>
 <body>
@@ -88,6 +96,13 @@
 
 <!--<button onclick='payTest("nicepay","kakao")'>KAKAO</button>-->
 <a href="#" onclick='payTest("nicepay","kakao")'><img src="kakao.png" style="width:200px; height:auto"></a>
+
+
+<hr>
+<button onclick='getAccessToken()'>getAccessToken</button>
+
+<hr>
+<button onclick='refundTest()'>refundTest</button>
 
 </body>
 </html>

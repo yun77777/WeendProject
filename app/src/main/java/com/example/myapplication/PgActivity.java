@@ -39,7 +39,11 @@ public class PgActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pg);
 
+
         webview = (BootpayWebView)findViewById(R.id.wv_main);
+        AndroidBridge bridge = new AndroidBridge(webview, PgActivity.this);
+        webview.addJavascriptInterface(bridge, "bridge");
+
 //        webview.addJavascriptInterface(new WebAppInterface(this), "Android");
 
 //        webview.getSettings().setJavaScriptEnabled(true);
