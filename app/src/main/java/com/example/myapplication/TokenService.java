@@ -72,8 +72,6 @@ public class TokenService {
                         JsonParser jsonParser = new JsonParser();
                         JsonElement element = jsonParser.parse(result);
 
-//                        String str = IOUtils.toString(response.getEntity().getContent(), "UTF-8");
-
                         Type resTokenType = new TypeToken<ResDefault<TokenData>>(){}.getType();
                         ResDefault<TokenData> resToken = new Gson().fromJson(result, resTokenType);
                         if(resToken.status == 200)
@@ -82,11 +80,10 @@ public class TokenService {
                         Type resType = new TypeToken<ResDefault<HashMap<String, Object>>>(){}.getType();
                         ResDefault res = new Gson().fromJson(result, resType);
                         Log.d("res:", String.valueOf(res));
+                        Log.d("resToken:", String.valueOf(resToken));
+                        Log.d("bootpay.token:", String.valueOf(bootpay.token));
+//                        bootpay.setToken(bootpay.token);
 
-//                        String msg = element.getAsJsonObject().get("msg").getAsString();
-//                        String status = element.getAsJsonObject().get("status") != null ? element.getAsJsonObject().get("status").getAsString() : null;
-//
-//                        System.out.println("msg : " + msg);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

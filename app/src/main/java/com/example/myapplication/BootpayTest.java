@@ -41,6 +41,8 @@ public class BootpayTest extends BootpayObject {
         //token
         public ResDefault<HashMap<String, Object>> getAccessToken() throws Exception {
             Log.d("getAT:", String.valueOf(this));
+
+//            return CancelService.getAccessToken(this);
             return TokenService.getAccessToken(this);
         }
 
@@ -62,9 +64,9 @@ public class BootpayTest extends BootpayObject {
 //        }
 //
 //        //cancel
-//        public ResDefault<HashMap<String, Object>> receiptCancel(Cancel cancel) throws Exception {
-//            return CancelService.receiptCancel(this, cancel);
-//        }
+        public ResDefault<HashMap<String, Object>> receiptCancel(Cancel cancel) throws Exception {
+            return CancelService.receiptCancel(this, cancel);
+        }
 //
 //        //easy
 //        public ResDefault<HashMap<String, Object>> getUserToken(UserToken userToken) throws Exception {

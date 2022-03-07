@@ -17,15 +17,14 @@ import retrofit2.http.Query;
 
 public interface PgApiService {
 
-//    @Headers({"Content-Type: application/json"})
-//    Call<ResponseBody> getAccessToken(@Body String data);
 
-//    @FormUrlEncoded
     @Headers("content-type: application/json; charset=utf8")
-//    @FormUrlEncoded
     @POST("request/token.json")
-//    Call<ResponseBody> getAccessToken(@Field("token") String data);
     Call<ResponseBody> getAccessToken(@Body Token token);
+
+    @Headers("content-type: application/json; charset=utf8")
+    @POST("cancel")
+    Call<ResponseBody> cancel(@Body Token token);
 
 
 //    @Headers("Accept: application/json; Content-Type: application/json; charset=utf-8")
